@@ -1,0 +1,12 @@
+// Import Variables
+@use 'variables' as *;
+
+// Import Mixins
+@use 'mixins' as *;
+
+.wrapper {
+  @include flex(center, center);
+  background-color: $Light-Grayish-Blue;
+  min-height: 100vh;
+  padding: 1.5rem;
+}

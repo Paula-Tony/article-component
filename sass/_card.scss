@@ -1,0 +1,190 @@
+// Import Variables
+@use 'variables' as *;
+
+// Import Mixins
+@use 'mixins' as *;
+
+.card {
+  @include flex(stretch, space-between);
+  background-color: white;
+  max-width: 900px;
+  border-radius: 15px;
+
+  @include mobile {
+    & {
+      flex-direction: column;
+    }
+  }
+
+  &__img {
+    flex-basis: 40%;
+    border-radius: 15px 0 0 15px;
+    overflow: hidden;
+
+    @include mobile {
+      & {
+        border-radius: 15px 15px 0 0;
+        max-height: 350px;
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    flex-basis: 60%;
+    padding: 2rem;
+
+    &__title {
+      font-size: 1.5rem;
+      color: $Very-Dark-Grayish-Blue;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    &__description {
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: $Desaturated-Dark-Blue;
+
+      @include mobile {
+        & {
+          margin-bottom: 3.5rem;
+        }
+      }
+    }
+
+    &__info {
+      @include flex(center, space-between);
+      position: relative;
+
+      &__about {
+        @include flex(center, center);
+
+        @include mobile {
+          & {
+            display: none;
+          }
+        }
+
+        &__img {
+          width: 50px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 1rem;
+
+          img {
+            max-width: 100%;
+          }
+        }
+
+        &__data {
+
+          h2 {
+            font-size: 1rem;
+            color: $Very-Dark-Grayish-Blue;
+            margin-bottom: 0.1rem;
+          }
+
+          p {
+            font-size: 0.9rem;
+            color: $Desaturated-Dark-Blue;
+          }
+        }
+      }
+
+      &__share {
+        @include flex(center, center);
+
+
+        svg {
+          fill: $Desaturated-Dark-Blue ;
+        }
+
+        @include mobile {
+          & {
+            position: absolute;
+            right: 0;
+            z-index: 1;
+            background-color: $Desaturated-Dark-Blue;
+
+            svg {
+              fill: white;
+            }
+          }
+        }
+
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: $Light-Grayish-Blue;
+        cursor: pointer;
+      }
+
+      &__social {
+        @include flex(center, center);
+
+        @include mobile {
+          & {
+            opacity: 1;
+            top: -2rem;
+            left: -2rem;
+            bottom: -2rem;
+            width: calc(100% + 4rem);
+            border-radius: 0 0 15px 15px;
+            justify-content: flex-start;
+            padding: 2rem;
+            gap: 2rem;
+          }
+        }
+
+        width: 200px;
+        gap: 0.75rem;
+        position: absolute;
+        top: -55px;
+        right: -82.5px;
+        padding: 0.75rem;
+        border-radius: 15px;
+        background-color: $Very-Dark-Grayish-Blue;
+        transition: 0.3s ease;
+        opacity: 0;
+
+        &::before {
+          @include mobile {
+            & {
+              display: none;
+            }
+          }
+
+          content: '';
+          position: absolute;
+          bottom: -20px;
+
+          border: {
+            width: 10px;
+            style: solid;
+            color: $Very-Dark-Grayish-Blue transparent transparent transparent;
+          }
+        }
+
+        span {
+          color: $Light-Grayish-Blue;
+          font-size: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
